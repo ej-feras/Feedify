@@ -21,7 +21,7 @@ A user can:
 3. - [x] Restore the password.
 4. - [x] Manage his/her account.
 5. - [x] Subscribe to RSS feed.
-6. - [x] RSS-Feed in Kategorien einordnen.
+6. - [x] Organize RSS feeds into categories.
 7. - [x] Sort Rss feeds by date of publication, unread, channel and category in descending and ascending order.
 8. - [x] Sort RSS feeds according to their relevance to the user profile.
 9. - [x] Search the RSS feeds.
