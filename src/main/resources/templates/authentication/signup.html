@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<thymeleaf th:replace="layouts/head :: head" />
+</head>
+
+<body class="app app-signup p-0">
+	<div class="row g-0 app-auth-wrapper">
+
+		<div class="col-12 col-lg-6 h-100 auth-background-col">
+			<div class="auth-background-holder">
+			</div>
+		</div>
+		<!--//auth-background-col-->
+
+		<div class="col-12 col-md-7 col-lg-6 auth-main-col text-center p-5 m-sm-auto">
+			<div class="d-flex flex-column align-content-end">
+				<div class="app-auth-body mx-auto">
+					<div class="app-auth-branding mb-4"><a class="app-logo" href="#"><img class="logo-icon mr-2"
+								src="assets/images/logo.svg" alt="logo"></a></div>
+					<h2 class="auth-heading text-center mb-4">Sign up to feedify</h2>
+
+					<div class="auth-form-container text-left mx-auto">
+
+						<div th:if="${emailExist}" class="alert alert-danger">* Email already exists</div>
+						<div th:if="${usernameExist}" class="alert alert-danger">* Username already exists</div>
+						<!--//auth-errors-->
+
+						<form action="#" th:action="@{/signup}" th:object="${userCommand}" th:method="POST"
+							id="auth-form" class="auth-form auth-signup-form ">
+							<div id="first-name" class="mb-3">
+								<label class="sr-only" for="signup-first-name">Your first name</label>
+
+								<input th:field="*{firstName}" id="signup-first-name" name="signup-fisrt-name"
+									type="text" class="form-control signup-name" placeholder="First name"
+									pattern="[a-zA-Z0-9]{3,60}"
+									oninvalid="this.setCustomValidity('First name must be between 3 and 60 and contain only letters and numbers')"
+									oninput="this.setCustomValidity('')" required="required">
+
+								<th:block th:if="${#fields.hasErrors('firstName')}">
+									<div class="alert alert-danger alert-dismissible fade show mt-1 text-start"
+										role="alert">
+										<span th:each="error : ${#fields.errors('firstName')}" th:text="${error}"
+											style="white-space: pre-line; font-size: 0.75rem;"></span>
+										<button type="button" class="btn-close btn-xs" data-bs-dismiss="alert"
+											aria-label="Close"></button>
+									</div>
+									<!--//firstName-validation-->
+								</th:block>
+							</div>
+							<!--//form-group-->
+							<div id="last-name" class="mb-3">
+								<label class="sr-only" for="signup-last-name">Your last name</label>
+
+								<input th:field="*{lastName}" id="signup-last-name" name="signup-last-name" type="text"
+									class="form-control signup-name" placeholder="Last name" pattern="[a-zA-Z0-9]{3,60}"
+									oninvalid="this.setCustomValidity('Last name must be between 3 and 60 and contain only letters and numbers')"
+									oninput="this.setCustomValidity('')" required="required">
+
+								<th:block th:if="${#fields.hasErrors('lastName')}">
+									<div class="alert alert-danger alert-dismissible fade show mt-1 text-start"
+										role="alert">
+										<span th:each="error : ${#fields.errors('lastName')}" th:text="${error}"
+											style="white-space: pre-line; font-size: 0.75rem;"></span>
+										<button type="button" class="btn-close btn-xs" data-bs-dismiss="alert"
+											aria-label="Close"></button>
+									</div>
+									<!--//lastName-validation-->
+								</th:block>
+							</div>
+							<!--//form-group-->
+							<div id="email" class="mb-3">
+								<label class="sr-only" for="signup-email">Your Email</label>
+								<input th:field="*{email}" id="signup-email" name="signup-email" type="email"
+									class="form-control signup-email" placeholder="Email"
+									pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+									oninvalid="this.setCustomValidity('Enter a valid email address')"
+									oninput="this.setCustomValidity('')" required="required">
+							</div>
+							<!--//form-group-->
+							<div id="username" class="mb-3">
+								<label class="sr-only" for="signup-username">Your username</label>
+
+								<input th:field="*{username}" id="signup-username" name="signup-username" type="text"
+									class="form-control username" placeholder="Username" pattern="[a-zA-Z0-9]{5,30}"
+									oninvalid="this.setCustomValidity('Username must be between 5 and 30 and contain only letters and numbers')"
+									oninput="this.setCustomValidity('')" required="required">
+
+								<th:block th:if="${#fields.hasErrors('username')}">
+									<div class="alert alert-danger alert-dismissible fade show mt-1 text-start"
+										role="alert">
+										<span th:each="error : ${#fields.errors('username')}" th:text="${error}"
+											style="white-space: pre-line; font-size: 0.75rem;"></span>
+										<button type="button" class="btn-close btn-xs" data-bs-dismiss="alert"
+											aria-label="Close"></button>
+									</div>
+									<!--//username-validation-->
+								</th:block>
+							</div>
+							<!--//form-group-->
+							<div id="password" class="mb-3">
+								<label class="sr-only" for="signup-password">Password</label>
+								<div class="password-toggle position-relative">
+									<input th:field="*{password}" id="signup-password" name="signup-password"
+										type="password" class="form-control signup-password"
+										placeholder="Create a password"
+										pattern="^(?!.* )(?=.*\d)(?=.*[A-Z])(?=.*[a-z]).{8,30}$"
+										oninvalid="this.setCustomValidity('Password must contain 8 or more characters that are of at least one number,  one uppercase and lowercase letter and not a whitespace')"
+										oninput="this.setCustomValidity('')" required="required">
+									<i class="far fa-eye" id="toggle-icon"></i>
+								</div>
+
+
+								<th:block th:if="${#fields.hasErrors('password')}">
+									<div class="alert alert-danger alert-dismissible fade show mt-1 text-start"
+										role="alert">
+										<span th:each="error : ${#fields.errors('password')}" th:text="${error}"
+											style="white-space: pre-line; font-size: 0.75rem;"></span>
+										<button type="button" class="btn-close btn-xs" data-bs-dismiss="alert"
+											aria-label="Close"></button>
+									</div>
+									<!--//password-validation-->
+								</th:block>
+
+
+							</div>
+							<!--//form-group-->
+
+
+							<div class="text-center">
+								<button type="submit" class="btn app-btn-primary btn-block theme-btn mx-auto">Sign
+									Up</button>
+							</div>
+						</form>
+						<!--//auth-form-->
+
+						<div class="auth-option text-center pt-5">Already have an account? <a class="text-link"
+								th:href="@{/login}">Log in</a></div>
+					</div>
+					<!--//auth-form-container-->
+
+				</div>
+				<!--//auth-body-->
+
+			</div>
+			<!--//flex-column-->
+		</div>
+		<!--//auth-main-col-->
+
+	</div>
+	<!--//row-->
+
+	<!-- Javascript -->
+	<script type="text/javascript" th:src="@{/assets/plugins/bootstrap/js/bootstrap.min.js}"></script>
+	<script type="text/javascript">
+		const toggleIcon = document.querySelector('#toggle-icon');
+		const password = document.querySelector("input[type='password']");
+		toggleIcon.addEventListener('click', function (e) {
+			// toggle the type attribute
+			const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+			password.setAttribute('type', type);
+			// toggle the eye slash icon
+			this.classList.toggle('fa-eye-slash');
+		});
+	</script>
+
+</body>
+
+</html>

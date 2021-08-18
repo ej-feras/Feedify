@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<thymeleaf th:replace="layouts/head :: head" />
+</head>
+
+<body class="app">
+
+
+	<div id="header-container" th:insert="layouts/header :: header">
+	</div>
+
+	<div class="app-wrapper">
+
+		<div class="app-content pt-3 p-md-3 p-lg-4">
+			<div id='main-container' class="container-xl">
+				<div class="row g-3 mb-4 align-items-center justify-content-between">
+					<div class="col-auto">
+						<h1 class="app-page-title mb-0">All Feeds
+							<th:block th:if="${categoryName != null}">/ Category / <span class="text-break"
+									th:utext="${#strings.capitalize(categoryName)}"></span>
+								<th:block th:if="${channelTitle != null}">/ Channel / <span
+										th:utext="${#strings.capitalize(channelTitle)}"></span>
+								</th:block>
+							</th:block>
+						</h1>
+					</div>
+					<div class="col-auto">
+						<thymeleaf th:replace="layouts/page-utilities :: page-utilities" />
+					</div>
+					<!--//col-auto-->
+				</div>
+				<!--//row-->
+
+				<div id="loader" class="loader d-none"></div>
+
+				<div id="cards-container" th:if="${view} == 'cards'" th:insert="layouts/feeds-cards :: feeds-cards">
+				</div>
+				<div id="list-items-container" th:if="${view} == 'title-only'"
+					th:insert="layouts/feeds-list :: feeds-list"></div>
+
+			</div>
+			<!--//container-fluid-->
+		</div>
+		<!--//app-content-->
+
+		<div id="modals" th:insert="layouts/modals :: modals"></div>
+		<!--//modals-->
+
+
+	</div>
+	<!--//app-wrapper-->
+	<thymeleaf th:replace="layouts/scripts :: scripts" />
+	<script type="text/javascript" th:src="@{/assets/js/preloader.js}"></script>
+	<script th:inline="javascript">
+		var csrfToken =  /*[[${_csrf.token}]]*/ '';
+	</script>
+	<script type="text/javascript" th:src="@{/assets/js/sidePanel.js}"></script>
+	<script type="text/javascript" th:src="@{/assets/js/feeds.js}"></script>
+
+
+</body>
+
+</html>

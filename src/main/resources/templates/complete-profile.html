@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<thymeleaf th:replace="layouts/head :: head" />
+</head>
+
+<body class="app overflow-hidden">
+
+
+	<div class="app-wrapper-no-header ">
+
+		<div class="app-content d-flex align-items-center justify-content-center" style="height: 500px">
+			<div class="container-xl">
+				<div class="row justify-content-center">
+					<div class="col-auto">
+						<h1 class="app-page-title mb-5">Add some topics you are interested in &#128204;</h1>
+					</div>
+				</div>
+				<div class="row justify-content-center ">
+					<div class="col-auto">
+						<input type="text" id="tag-input">
+					</div>
+				</div>
+				<div class="row justify-content-center mt-5">
+					<div class="col-auto">
+						<button id="save-interests" type="submit" class="btn app-btn-primary">Start</button>
+					</div>
+				</div>
+
+				<div id="loader" class="loader d-none"></div>
+
+			</div>
+			<!--//container-fluid-->
+		</div>
+		<!--//app-content-->
+
+	</div>
+	<!--//app-wrapper-no-header-->
+
+	<thymeleaf th:replace="layouts/scripts :: scripts" />
+	<script type="text/javascript" th:src="@{/assets/js/preloader.js}"></script>
+	<script th:inline="javascript">
+		var csrfToken =  /*[[${_csrf.token}]]*/ '';
+	</script>
+	<script th:inline="javascript" th:src="@{/assets/js/completeProfile.js}"></script>
+	<script src="assets/js/tagsInput.js"></script>
+	<script>
+		var tagInput = new TagsInput({
+			selector: 'tag-input',
+			duplicate: false,
+			max: 10
+		});
+	</script>
+
+</body>
+
+</html>
