@@ -45,7 +45,7 @@ On the homepage, the user gets all the feeds of the subscribed channels and can 
 
 
 # Technologies
-- java
+- java 8+
 - Springboot
 - Thymeleaf
 - Postgresql
