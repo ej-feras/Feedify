@@ -6,6 +6,7 @@
 1. [Introduction and motivation](#Introduction-and-motivation)
 2. [Use Cases](#Use-Cases)
 3. [User Interface](#User-Interface)
+4. [Demo](#Demo)
 
 # Introduction and motivation
 More and more websites publish content (articles) for reading. This content is often summarized in an xml file that 
@@ -52,3 +53,6 @@ On the homepage, the user gets all the feeds of the subscribed channels and can 
 - HTML
 - CSS
 - Javascript
+
+# Demo
+https://www.youtube.com/watch?v=mdcXIcyD1fI&t=19s&ab_channel=EJ
