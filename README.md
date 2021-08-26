@@ -1,5 +1,3 @@
-## (Still in Development)
-
 # ✨Feedify✨
 # RSS-Feeds Reader
 
@@ -55,4 +53,4 @@ On the homepage, the user gets all the feeds of the subscribed channels and can 
 - Javascript
 
 # Demo
-https://www.youtube.com/watch?v=mdcXIcyD1fI&t=19s&ab_channel=EJ
+https://www.youtube.com/watch?v=mdcXIcyD1fI&t=0s&ab_channel=EJ
